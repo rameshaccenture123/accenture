@@ -5,6 +5,8 @@ on:
     branches: [ development ]
   pull_request:
     branches: [ master ]
+    paths: ".github/workflows/maven.yaml"
+   
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
