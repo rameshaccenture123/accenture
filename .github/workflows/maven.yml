@@ -2,7 +2,7 @@ name: Maven CI/CD
 
 on:
   push:
-    branches: [ development ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
     paths: ".github/workflows/maven.yaml"
