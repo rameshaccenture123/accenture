@@ -35,14 +35,17 @@ jobs:
         restore-keys: ${{ runner.os }}-m2      
 
     - name: Juint test with Maven
-      run: mvn -B clean test --file pom.xml --logger "xml:LogFileName=test-results.xml || true
+      run: mvn -B clean test --file pom.xml
       
-    - name: testreport
+    - name: publish test results
       uses: actions/checkout@v2
       if: always()
       with:
-        name: testreport
-        path: "**/test-results.xml"
+        files: |
+          test-results/**/*.xml
+          test-results/**/*.trx
+          test-results/**/*.json
+    - run: mkdir testreults && cp -r ~/target/. ~/testreults
         reporter: java-unit
         fail-on-error: true
         
