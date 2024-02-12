@@ -38,7 +38,7 @@ jobs:
       run: mvn -B clean test --file pom.xml --logger "xml:LogFileName=test-results.xml || true
       
     - name: testreport
-      uses: rameshaccenture123/checkout@v2
+      uses: actions/checkout@v2
       if: always()
       with:
         name: testreport
