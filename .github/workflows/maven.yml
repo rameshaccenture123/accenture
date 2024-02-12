@@ -34,20 +34,6 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2      
 
-    - name: Juinttest
-      run: mvn -B clean test --file pom.xml
-    - run: mkdir testresults && cp -r ~/**/. ~/testresults
-    - name: publish test results
-      uses: actions/checkout@v2
-      if: always()
-      with:
-        files: |
-          test-results/**/*.xml
-          test-results/**/*.trx
-          test-results/**/*.json
-          name: test-results
-          path: testresults
-        
     - name: build project with Maven
       run: mvn -B package --file pom.xml 
   publish-job:
@@ -64,4 +50,3 @@ jobs:
           with:
             name: Package
             path: staging
- 
