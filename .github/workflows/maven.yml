@@ -35,7 +35,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2      
 
     - name: Juinttest project with Maven
-      run: mvn -B tests --file pom.xml
+      run: mvn -B clean test --file pom.xml
     - name: report
       uses: actions/checkout@v2
       if: always()
