@@ -35,21 +35,19 @@ jobs:
         restore-keys: ${{ runner.os }}-m2      
 
     - name: Juint test with Maven
-      run: mvn -B clean test --file pom.xml
-    - name: report
-      uses: actions/checkout@v2
-
+      run: mvn -B clean test --file pom.xml --logger "xml:LogFileName=test-results.xml || true
+      
+    - name: testreport
+      uses: rameshaccenture123/checkout@v2
       if: always()
-    - run: mkdir staging && cp target/*.xml staging
-    - uses: actions/upload-artifact@v1
       with:
         name: testreport
-        path: staging
+        path: "**/test-results.xml"
         reporter: java-unit
         fail-on-error: true
         
     - name: build project with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml 
   publish-job:
       runs-on: ubuntu-latest
       needs: [build_and_test]
@@ -59,7 +57,7 @@ jobs:
           with:
             java-version: 14
         - run: mvn -B package --file pom.xml -DskipTests
-        - run: cp target/*jar-with-dependencies.jar staging
+        - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
         - uses: actions/upload-artifact@v1
           with:
             name: Package
