@@ -34,13 +34,14 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2      
 
-    - name: Juinttest project with Maven
+    - name: Juint test with Maven
       run: mvn -B clean test --file pom.xml
     - name: report
       uses: actions/checkout@v2
+    - uses: actions/upload-artifact@v1
       if: always()
       with:
-        name: maven tests
+        name: testreport
         path: mkdir staging && cp target/*.xml staging
         reporter: java-unit
         fail-on-error: true
