@@ -45,7 +45,7 @@ jobs:
           test-results/**/*.xml
           test-results/**/*.trx
           test-results/**/*.json
-    - run: mkdir testreults && cp -r ~/target/. ~/testreults
+          run: mkdir testreults && cp -r ~/target/. ~/testreults
         reporter: java-unit
         fail-on-error: true
         
