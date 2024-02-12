@@ -38,11 +38,13 @@ jobs:
       run: mvn -B clean test --file pom.xml
     - name: report
       uses: actions/checkout@v2
-    - uses: actions/upload-artifact@v1
+
       if: always()
+    - run: mkdir staging && cp target/*.xml staging
+    - uses: actions/upload-artifact@v1
       with:
         name: testreport
-        path: mkdir staging && cp target/*.xml staging
+        path: staging
         reporter: java-unit
         fail-on-error: true
         
