@@ -34,7 +34,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2      
     - name: test
-      run: mvn -B *Tests --file pom.xml
+      run: mvn clean test
       
     - name: build project with Maven
       run: mvn -B package --file pom.xml 
