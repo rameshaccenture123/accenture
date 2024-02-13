@@ -33,7 +33,9 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2      
-
+    - name: test
+      run: mvn -B clean test --file pom.xml
+      
     - name: build project with Maven
       run: mvn -B package --file pom.xml 
   publish-job:
@@ -50,14 +52,7 @@ jobs:
           with:
             name: Package
             path: staging
-        - name: run test
-          run: mvn -B clean test --file pom.xml
-        - run: mkdir testArtifacts
-        - name: test results
-          uses: actions/upload-artifact@v1
-          with:
-           name: Reports
-           path: testArtifacts
+
   
 
  
