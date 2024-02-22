@@ -2,10 +2,9 @@ name: Junit
  
 on:
   push:
-    branches:
-      - test
+    branches: [ test ]
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [ test ]
  
 jobs:
   build:
