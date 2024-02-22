@@ -3,7 +3,7 @@ name: Junit
 on:
   push:
     branches:
-      - development
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
  
