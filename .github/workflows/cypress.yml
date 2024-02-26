@@ -1,4 +1,4 @@
-name: example-basic
+name: tests
 # This workflow represents a set of basic End-to-End tests
 on:
   push:
@@ -6,13 +6,11 @@ on:
       - 'master'
 jobs:
   cypress-run:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v1
       - name: Cypress run
-        uses: ./
-		    with:
-		      working directory: src/main/java
-		      install-component: npm install
-    		      build: npm run build
-    		      start: npm start
+        uses: cypress-io/github-action@v2
+	with:
+	  start: npm start
