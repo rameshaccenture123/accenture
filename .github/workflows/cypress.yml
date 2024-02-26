@@ -11,9 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: ./
 		    with:
 		      working directory: src/main/java
 		      install-component: npm install
-    		  build: npm run build
-    		  start: npm start
+    		      build: npm run build
+    		      start: npm start
