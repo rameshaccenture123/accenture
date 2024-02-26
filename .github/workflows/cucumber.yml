@@ -1,18 +1,10 @@
 name: Test Java
 
 on:
-  pull_request:
-    branches:
-      - '**'
-  workflow_call:
   push:
-    branches:
-      - main
-      - v4.x.x
-      - v5.x.x
-      - v6.x.x
-      - v7.x.x
-      - renovate/**
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
