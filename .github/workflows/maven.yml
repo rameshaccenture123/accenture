@@ -53,7 +53,7 @@ jobs:
         - name: Download JAR artifact
           uses: actions/download-artifact@v1
           with:
-            name: github-action-maven-tutorial-1.0-SNAPSHOT
+            name: Package
             path: staging
         - name: Run JAR
           run: java -jar github-action-maven-tutorial-1.0-SNAPSHOT.jar
