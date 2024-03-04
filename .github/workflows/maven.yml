@@ -54,6 +54,6 @@ jobs:
           uses: actions/download-artifact@v1
           with:
             name: staging
-            path: cd staging
+            path: staging
         - name: Run JAR
           run: java -jar jar-with-dependencies.jar
