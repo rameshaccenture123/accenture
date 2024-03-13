@@ -50,10 +50,4 @@ jobs:
           with:
             name: Package
             path: staging
-        - name: Download JAR artifact
-          uses: actions/download-artifact@v1
-          with:
-            name: Package
-            path: staging
-        - name: Run JAR
-          run: java -jar github-action-maven-tutorial-1.0-SNAPSHOT.jar
+
